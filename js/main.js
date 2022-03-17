@@ -1,6 +1,7 @@
 const app = new Vue({
-    el:'app',
+    el:'#app',
     data: {
+        activeImage : 0,
         images : [
             {
                 url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -30,6 +31,23 @@ const app = new Vue({
                 description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
             },
         ],
-    }
+    },
+    methods: {
+        forward(){
+            if (this.activeImage === 0){
+                this.activeImage = this.images.length - 1;
+            }else{
+                this.activeImage--;
+            }
+        },
+        next(){
+            if (this.activeImage === this.images.length - 1){
+                this.activeImage = 0;
+            }else{
+                this.activeImage++;
+            }
+        },
+    },
     
-})
+});
+
